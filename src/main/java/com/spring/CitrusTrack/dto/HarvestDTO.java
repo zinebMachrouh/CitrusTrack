@@ -22,10 +22,6 @@ public class HarvestDTO {
     @NotNull(message = "Date is required")
     private LocalDate date;
 
-    @NotNull(message = "Quantity is required")
-    @Min(value = 1, message = "Quantity must be greater than 0")
-    private Double quantity;
-
     @NotNull(message = "Field is required")
     private FieldDTO field;
 }

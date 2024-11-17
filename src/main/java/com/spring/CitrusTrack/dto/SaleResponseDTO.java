@@ -15,8 +15,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class SaleResponseDTO {
-    @Builder.Default
-    private Long id = 0L;
+    private Long id;
 
     @NotNull(message = "The sale date is required")
     private LocalDate date;

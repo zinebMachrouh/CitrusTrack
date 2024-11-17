@@ -16,8 +16,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class TreeResponseDTO {
-    @Builder.Default
-    private Long id = 0L;
+    private Long id;
 
     @NotNull(message = "Plantation date is required")
     private LocalDate plantationDate;
