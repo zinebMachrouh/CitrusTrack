@@ -28,6 +28,6 @@ public class Farm {
     private Double area;
 
     @Column(name = "creationDate", nullable = false)
-    private LocalDate creationDate;
+    private LocalDate creationDate = LocalDate.now();
 
 }
