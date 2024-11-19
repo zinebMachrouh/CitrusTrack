@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Farm {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -27,7 +28,9 @@ public class Farm {
     @Column(name = "area", nullable = false)
     private Double area;
 
-    @Column(name = "creationDate", nullable = false)
-    private LocalDate creationDate = LocalDate.now();
+    @Column(name = "creationDate")
+    private LocalDate creationDate;
 
+    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Field> fields;
 }

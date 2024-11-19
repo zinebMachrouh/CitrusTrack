@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -22,6 +24,8 @@ public class FarmDTO {
     private String location;
 
     @NotBlank(message = "area is required")
-    @Min(value = 1, message = "area must be greater than 0")
+    @Min(value = 0, message = "area must be greater than 0")
     private Double area;
+
+    private List<FieldDTO> fields;
 }
