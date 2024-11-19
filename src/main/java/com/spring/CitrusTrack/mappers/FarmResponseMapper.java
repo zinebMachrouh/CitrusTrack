@@ -12,6 +12,7 @@ public interface FarmResponseMapper {
     FarmResponseDTO toDTO(Farm farm);
 
     @Mapping(target = "creationDate", ignore = true)
+    @Mapping(target = "fields", ignore = true)
     Farm toEntity(FarmResponseDTO farmDTO);
 
     List<FarmResponseDTO> toDTOList(List<Farm> farms);

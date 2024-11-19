@@ -14,7 +14,7 @@ public class FieldDTO {
     private Long id = 0L;
 
     @NotBlank(message = "Area is required")
-    @Min(value = 1, message = "Area must be greater than 0")
+    @Min(value = 0, message = "Area must be greater than 0")
     private Double area;
 
     @NotNull(message = "Farm is required")
