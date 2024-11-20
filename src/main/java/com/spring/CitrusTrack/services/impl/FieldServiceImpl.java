@@ -10,6 +10,7 @@ import com.spring.CitrusTrack.mappers.FieldMapper;
 import com.spring.CitrusTrack.repositories.FarmRepository;
 import com.spring.CitrusTrack.repositories.FieldRepository;
 import com.spring.CitrusTrack.services.FieldService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.Optional;
 @Validated
 @AllArgsConstructor
 @Slf4j
+@Transactional
 public class FieldServiceImpl implements FieldService {
     private final FieldRepository fieldRepository;
     private final FarmRepository farmRepository;
@@ -51,26 +53,28 @@ public class FieldServiceImpl implements FieldService {
         }
     }
 
+    @Transactional
     @Override
     public FieldDTO updateField(FieldDTO fieldDTO) {
-        if (!fieldRepository.existsById(fieldDTO.getId())) {
-            throw new DoesNotExistsException("Field with id " + fieldDTO.getId() + " does not exist.");
-        }
+        Field existingField = fieldRepository.findById(fieldDTO.getId())
+                .orElseThrow(() -> new DoesNotExistsException("Field with id " + fieldDTO.getId() + " does not exist."));
 
         validateField(fieldDTO);
 
         Field fieldToUpdate = fieldMapper.toEntity(fieldDTO);
 
-        List<Field> fields = fieldToUpdate.getFarm().getFields();
-        if (fields == null) {
-            fields = new ArrayList<>();
-            fieldToUpdate.getFarm().setFields(fields);
-        }
+        Farm existingFarm = farmRepository.findById(fieldDTO.getFarm().getId())
+                .orElseThrow(() -> new DoesNotExistsException("Farm with id " + fieldDTO.getFarm().getId() + " does not exist."));
 
-        fields.removeIf(f -> f.getId().equals(fieldToUpdate.getId()));
+        fieldToUpdate.setFarm(existingFarm);
+
+        List<Field> fields = existingFarm.getFields();
+        fields.removeIf(field -> field.getId().equals(fieldToUpdate.getId()));
         fields.add(fieldToUpdate);
 
-        Field updatedField = fieldRepository.save(fieldToUpdate);
+        fieldToUpdate.setTrees(existingField.getTrees());
+
+        Field updatedField = fieldRepository.save(existingField);
 
         return fieldMapper.toDTO(updatedField);
     }

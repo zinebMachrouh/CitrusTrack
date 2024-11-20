@@ -2,6 +2,7 @@ package com.spring.CitrusTrack.controllers;
 
 import com.spring.CitrusTrack.dto.FieldDTO;
 import com.spring.CitrusTrack.services.FieldService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class FieldController {
     private final FieldService fieldService;
 
     @PostMapping
-    public ResponseEntity<FieldDTO> createField(@RequestBody FieldDTO fieldDTO) {
+    public ResponseEntity<FieldDTO> createField(@RequestBody @Valid FieldDTO fieldDTO) {
         FieldDTO savedField = fieldService.saveField(fieldDTO);
         return ResponseEntity.status(201).body(savedField);
     }
@@ -28,11 +29,8 @@ public class FieldController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<FieldDTO> updateField(@PathVariable Long id, @RequestBody FieldDTO fieldDTO) {
-        if (!id.equals(fieldDTO.getId())) {
-            return ResponseEntity.badRequest().build();
-        }
+    @PutMapping
+    public ResponseEntity<FieldDTO> updateField(@RequestBody FieldDTO fieldDTO) {
         FieldDTO updatedField = fieldService.updateField(fieldDTO);
         return ResponseEntity.ok(updatedField);
     }

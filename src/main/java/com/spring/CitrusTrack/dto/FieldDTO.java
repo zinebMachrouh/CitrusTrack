@@ -16,6 +16,6 @@ public class FieldDTO {
     @PositiveOrZero(message = "Area must be 0 or greater")
     private Double area;
 
-    @NotNull(message = "Farm is required")
+    //@NotNull(message = "Farm is required")
     private FarmDTO farm;
 }

@@ -4,6 +4,7 @@ import com.spring.CitrusTrack.dto.FieldDTO;
 
 import com.spring.CitrusTrack.entities.Field;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public interface FieldMapper {
     FieldDTO toDTO(Field field);
 
+    @Mapping(target = "trees", ignore = true)
     Field toEntity(FieldDTO fieldDTO);
 
     List<FieldDTO> toDTOList(List<Field> fields);
