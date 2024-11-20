@@ -12,11 +12,11 @@ import com.spring.CitrusTrack.repositories.custom.FarmCustomRepository;
 import com.spring.CitrusTrack.services.FarmService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +38,7 @@ public class FarmServiceImpl implements FarmService {
         } else {
             Farm farm = farmMapper.toEntity(farmDTO);
             farm.setCreationDate(LocalDate.now());
+            farm.setFields(new ArrayList<>());
             farm = farmRepository.save(farm);
             return farmResponseMapper.toDTO(farm);
         }
@@ -65,6 +66,7 @@ public class FarmServiceImpl implements FarmService {
         Farm updatedFarm = farmMapper.toEntity(farmDTO);
 
         updatedFarm.setCreationDate(existingFarm.getCreationDate());
+        updatedFarm.setFields(existingFarm.getFields());
 
         updatedFarm = farmRepository.save(updatedFarm);
 

@@ -1,8 +1,7 @@
 package com.spring.CitrusTrack.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 @NoArgsConstructor
@@ -13,8 +12,8 @@ public class FieldDTO {
     @Builder.Default
     private Long id = 0L;
 
-    @NotBlank(message = "Area is required")
-    @Min(value = 0, message = "Area must be greater than 0")
+    @NotNull(message = "Area is required")
+    @PositiveOrZero(message = "Area must be 0 or greater")
     private Double area;
 
     @NotNull(message = "Farm is required")

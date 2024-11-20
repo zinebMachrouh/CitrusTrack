@@ -1,11 +1,12 @@
 package com.spring.CitrusTrack.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -15,20 +16,17 @@ import java.util.List;
 public class FarmResponseDTO {
     private Long id;
 
-    @NotBlank(message = "name is required")
-    @Size(min = 3, max = 50, message = "name must be between 3 and 50 characters")
+    @NotNull(message = "Name is required")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
 
-    @NotBlank(message = "location is required")
-    @Size(min = 3, max = 50, message = "location must be between 3 and 50 characters")
+    @NotNull(message = "Location is required")
+    @Size(min = 3, max = 50, message = "Location must be between 3 and 50 characters")
     private String location;
 
-    @NotBlank(message = "area is required")
-    @Min(value = 1, message = "area must be greater than 0")
+    @NotNull(message = "Area is required")
+    @PositiveOrZero(message = "Area must be 0 or greater")
     private Double area;
 
     private LocalDate creationDate;
-
-    private List<FieldDTO> fields;
 }
-

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,9 +29,9 @@ public class Farm {
     @Column(name = "area", nullable = false)
     private Double area;
 
-    @Column(name = "creationDate")
+    @Column(name = "creation_date")
     private LocalDate creationDate;
 
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Field> fields;
+    private List<Field> fields = new ArrayList<>();
 }
