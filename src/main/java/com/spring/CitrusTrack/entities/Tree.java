@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Tree {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "plantationDate", nullable = false)

@@ -31,4 +31,8 @@ public class TreeResponseDTO {
     @NotNull(message = "Age is required")
     @Min(value = 1, message = "Age must be greater than 0")
     private Integer age;
+
+    @NotNull(message = "Productivity is required")
+    @Min(value = 1, message = "Productivity must be greater than 0")
+    private Double productivity;
 }

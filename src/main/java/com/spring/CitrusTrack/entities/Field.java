@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -20,4 +23,7 @@ public class Field {
     @JoinColumn(name = "farm_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Farm farm;
+
+    @OneToMany(mappedBy = "field", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Tree> trees = new ArrayList<>();
 }

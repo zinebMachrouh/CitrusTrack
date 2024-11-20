@@ -26,7 +26,6 @@ public class Harvest {
     @Column(name = "quantity", nullable = false)
     private Double quantity;
 
-    @JoinColumn(name = "field_id", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Field field;
+    @Column(name = "stock", nullable = false)
+    private Double stock;
 }

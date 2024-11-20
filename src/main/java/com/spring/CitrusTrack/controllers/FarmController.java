@@ -3,6 +3,7 @@ package com.spring.CitrusTrack.controllers;
 import com.spring.CitrusTrack.dto.FarmDTO;
 import com.spring.CitrusTrack.dto.FarmResponseDTO;
 import com.spring.CitrusTrack.services.FarmService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class FarmController {
     private final FarmService farmService;
 
     @PostMapping
-    public ResponseEntity<FarmResponseDTO> createFarm(@RequestBody FarmDTO farmDTO) {
+    public ResponseEntity<FarmResponseDTO> createFarm(@RequestBody @Valid FarmDTO farmDTO) {
         FarmResponseDTO savedFarm = farmService.saveFarm(farmDTO);
         return ResponseEntity.status(201).body(savedFarm);
     }
@@ -29,11 +30,8 @@ public class FarmController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<FarmResponseDTO> updateFarm(@PathVariable Long id, @RequestBody FarmDTO farmDTO) {
-        if (!id.equals(farmDTO.getId())) {
-            return ResponseEntity.badRequest().build();
-        }
+    @PutMapping
+    public ResponseEntity<FarmResponseDTO> updateFarm(@RequestBody @Valid FarmDTO farmDTO) {
         FarmResponseDTO updatedFarm = farmService.updateFarm(farmDTO);
         return ResponseEntity.ok(updatedFarm);
     }
