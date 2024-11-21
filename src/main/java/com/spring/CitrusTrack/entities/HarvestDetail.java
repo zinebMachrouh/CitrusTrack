@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 public class HarvestDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "quantity", nullable = false)
