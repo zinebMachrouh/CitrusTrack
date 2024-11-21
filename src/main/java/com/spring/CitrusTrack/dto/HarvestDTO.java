@@ -16,12 +16,6 @@ public class HarvestDTO {
     @Builder.Default
     private Long id = 0L;
 
-    @NotNull(message = "Season is required")
-    private Season season;
-
     @NotNull(message = "Date is required")
     private LocalDate date;
-
-    @NotNull(message = "Field is required")
-    private FieldDTO field;
 }

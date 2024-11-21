@@ -13,7 +13,7 @@ import java.util.List;
 public interface FieldMapper {
     FieldDTO toDTO(Field field);
 
-    @Mapping(target = "trees", ignore = true)
+    //@Mapping(target = "trees", ignore = true)
     Field toEntity(FieldDTO fieldDTO);
 
     List<FieldDTO> toDTOList(List<Field> fields);
