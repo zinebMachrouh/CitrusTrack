@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Harvest {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "season", nullable = false)
