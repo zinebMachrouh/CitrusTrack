@@ -65,8 +65,10 @@ public class SaleServiceImpl implements SaleService {
         if (harvest.getStock() < quantityDifference) {
             throw new IllegalArgumentException("Insufficient stock to update sale");
         }
-        harvest.setStock(harvest.getStock() - quantityDifference);
-        harvestRepository.save(harvest);
+
+        if (!harvest.getDate().isEqual(saleDTO.getDate())) {
+            throw new IllegalArgumentException("Sale date must be after harvest date");
+        }
 
         existingSale.setDate(saleDTO.getDate());
         existingSale.setUnitPrice(saleDTO.getUnitPrice());
@@ -75,6 +77,8 @@ public class SaleServiceImpl implements SaleService {
         existingSale.setTotalRevenue(saleDTO.getUnitPrice() * saleDTO.getQuantity());
         Sale updatedSale = saleRepository.save(existingSale);
 
+        harvest.setStock(harvest.getStock() - quantityDifference);
+        harvestRepository.save(harvest);
         log.info("Sale updated successfully: {}", updatedSale);
 
         return saleResponseMapper.toDTO(updatedSale);
