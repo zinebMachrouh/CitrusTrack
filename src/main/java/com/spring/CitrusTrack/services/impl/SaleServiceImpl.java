@@ -37,6 +37,10 @@ public class SaleServiceImpl implements SaleService {
             throw new IllegalArgumentException("Insufficient stock in harvest: " + harvest.getStock());
         }
 
+        if (!harvest.getDate().isEqual(saleDTO.getDate())) {
+            throw new IllegalArgumentException("Sale date must be after harvest date");
+        }
+
         Sale sale = saleMapper.toEntity(saleDTO);
         sale.setTotalRevenue(sale.getUnitPrice() * sale.getQuantity());
         Sale savedSale = saleRepository.save(sale);
