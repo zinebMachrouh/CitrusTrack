@@ -1,5 +1,6 @@
 package com.spring.CitrusTrack.dto;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -25,8 +26,10 @@ public class FarmResponseDTO {
     private String location;
 
     @NotNull(message = "Area is required")
-    @PositiveOrZero(message = "Area must be 0 or greater")
+    @DecimalMin(value = "0.2" , message = "Area must be greater than 0.2")
     private Double area;
 
     private LocalDate creationDate;
+
+    private List<EmbeddedFieldDTO> fields = new ArrayList<>();
 }

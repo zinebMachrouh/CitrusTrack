@@ -1,12 +1,15 @@
 package com.spring.CitrusTrack.services.impl;
 
+import com.spring.CitrusTrack.dto.EmbeddedFieldDTO;
 import com.spring.CitrusTrack.dto.FarmDTO;
 import com.spring.CitrusTrack.dto.FieldDTO;
+import com.spring.CitrusTrack.dto.FieldResponseDTO;
 import com.spring.CitrusTrack.entities.Farm;
 import com.spring.CitrusTrack.entities.Field;
 import com.spring.CitrusTrack.exceptions.AlreadyExistsException;
 import com.spring.CitrusTrack.exceptions.DoesNotExistsException;
 import com.spring.CitrusTrack.mappers.FieldMapper;
+import com.spring.CitrusTrack.mappers.FieldResponseMapper;
 import com.spring.CitrusTrack.repositories.FarmRepository;
 import com.spring.CitrusTrack.repositories.FieldRepository;
 import com.spring.CitrusTrack.services.FieldService;
@@ -30,9 +33,10 @@ public class FieldServiceImpl implements FieldService {
     private final FarmRepository farmRepository;
 
     private final FieldMapper fieldMapper;
+    private final FieldResponseMapper fieldResponseMapper;
 
     @Override
-    public FieldDTO saveField(FieldDTO fieldDTO) {
+    public FieldResponseDTO saveField(FieldDTO fieldDTO) {
         if (fieldRepository.existsById(fieldDTO.getId())) {
             throw new AlreadyExistsException("Field with id " + fieldDTO.getId() + " already exists.");
         } else {
@@ -40,22 +44,22 @@ public class FieldServiceImpl implements FieldService {
 
             Field field = fieldMapper.toEntity(fieldDTO);
             List<Field> fields = field.getFarm().getFields();
-
             if (fields == null) {
                 fields = new ArrayList<>();
                 field.getFarm().setFields(fields);
             }
 
-            fields.add(field);
             field = fieldRepository.save(field);
+            fields.add(field);
 
-            return fieldMapper.toDTO(field);
+
+            return fieldResponseMapper.toDTO(field);
         }
     }
 
     @Transactional
     @Override
-    public FieldDTO updateField(FieldDTO fieldDTO) {
+    public FieldResponseDTO updateField(FieldDTO fieldDTO) {
         Field existingField = fieldRepository.findById(fieldDTO.getId())
                 .orElseThrow(() -> new DoesNotExistsException("Field with id " + fieldDTO.getId() + " does not exist."));
 
@@ -76,7 +80,7 @@ public class FieldServiceImpl implements FieldService {
 
         Field updatedField = fieldRepository.save(existingField);
 
-        return fieldMapper.toDTO(updatedField);
+        return fieldResponseMapper.toDTO(updatedField);
     }
 
 
@@ -91,25 +95,25 @@ public class FieldServiceImpl implements FieldService {
     }
 
     @Override
-    public Optional<FieldDTO> getField(Long id) {
+    public Optional<FieldResponseDTO> getField(Long id) {
         if (fieldRepository.existsById(id)) {
             Field field = fieldRepository.findById(id).get();
-            return Optional.of(fieldMapper.toDTO(field));
+            return Optional.of(fieldResponseMapper.toDTO(field));
         } else {
             throw new DoesNotExistsException("Field with id " + id + " does not exist");
         }
     }
 
     @Override
-    public List<FieldDTO> getAllField() {
+    public List<FieldResponseDTO> getAllField() {
         List<Field> fields = fieldRepository.findAll();
-        return fieldMapper.toDTOList(fields);
+        return fieldResponseMapper.toDTOList(fields);
     }
 
     @Override
-    public List<FieldDTO> getFieldsByFarm(Long farmId) {
+    public List<FieldResponseDTO> getFieldsByFarm(Long farmId) {
         List<Field> fields = farmRepository.findById(farmId).get().getFields();
-        return fieldMapper.toDTOList(fields);
+        return fieldResponseMapper.toDTOList(fields);
     }
 
     private void validateField(FieldDTO fieldDTO) {

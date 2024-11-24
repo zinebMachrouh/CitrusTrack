@@ -37,7 +37,6 @@ public class FarmServiceImpl implements FarmService {
             throw new AlreadyExistsException("Farm with id " + farmDTO.getId() + " already exists");
         } else {
             Farm farm = farmMapper.toEntity(farmDTO);
-            farm.setCreationDate(LocalDate.now());
             farm.setFields(new ArrayList<>());
             farm = farmRepository.save(farm);
             return farmResponseMapper.toDTO(farm);
@@ -65,7 +64,6 @@ public class FarmServiceImpl implements FarmService {
 
         Farm updatedFarm = farmMapper.toEntity(farmDTO);
 
-        updatedFarm.setCreationDate(existingFarm.getCreationDate());
         updatedFarm.setFields(existingFarm.getFields());
 
         updatedFarm = farmRepository.save(updatedFarm);

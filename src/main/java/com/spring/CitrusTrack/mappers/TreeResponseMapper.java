@@ -11,7 +11,6 @@ import java.util.List;
 public interface TreeResponseMapper {
     TreeResponseDTO toDTO(Tree tree);
 
-    @Mapping(target = "age", ignore = true)
     Tree toEntity(TreeResponseDTO treeResponseDTO);
 
     List<TreeResponseDTO> toDTOList(List<Tree> trees);

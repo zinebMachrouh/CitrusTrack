@@ -11,7 +11,6 @@ import java.util.List;
 public interface FarmMapper {
     FarmDTO toDTO(Farm farm);
 
-    @Mapping(target = "creationDate", ignore = true)
     Farm toEntity(FarmDTO farmDTO);
 
     List<FarmDTO> toDTOList(List<Farm> farms);

@@ -40,7 +40,7 @@ public class HarvestDetailServiceImpl implements HarvestDetailService {
             throw new IllegalArgumentException("Tree has already been included in another harvest for this season");
         }
 
-        TreeStatus treeStatus = tree.getStatus();
+        TreeStatus treeStatus = TreeStatus.determineTreeStatus(tree.getPlantationDate());
         double maxQuantity = treeStatus.getAnnualProductivity() / 4;
         if (harvestDetailDTO.getQuantity() > maxQuantity) {
             throw new IllegalArgumentException("Quantity exceeds tree's seasonal productivity");
@@ -88,7 +88,7 @@ public class HarvestDetailServiceImpl implements HarvestDetailService {
         existingHarvestDetail.setTree(tree);
         existingHarvestDetail.setHarvest(harvest);
 
-        TreeStatus treeStatus = tree.getStatus();
+        TreeStatus treeStatus = TreeStatus.determineTreeStatus(tree.getPlantationDate());
         double maxQuantity = treeStatus.getAnnualProductivity() / 4;
         if (harvestDetailDTO.getQuantity() > maxQuantity) {
             throw new IllegalArgumentException("Quantity exceeds tree's seasonal productivity");

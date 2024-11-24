@@ -1,6 +1,7 @@
 package com.spring.CitrusTrack.controllers;
 
 import com.spring.CitrusTrack.dto.FieldDTO;
+import com.spring.CitrusTrack.dto.FieldResponseDTO;
 import com.spring.CitrusTrack.services.FieldService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -17,21 +18,21 @@ public class FieldController {
     private final FieldService fieldService;
 
     @PostMapping
-    public ResponseEntity<FieldDTO> createField(@RequestBody @Valid FieldDTO fieldDTO) {
-        FieldDTO savedField = fieldService.saveField(fieldDTO);
+    public ResponseEntity<FieldResponseDTO> createField(@RequestBody @Valid FieldDTO fieldDTO) {
+        FieldResponseDTO savedField = fieldService.saveField(fieldDTO);
         return ResponseEntity.status(201).body(savedField);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FieldDTO> getField(@PathVariable Long id) {
-        Optional<FieldDTO> fieldDTO = fieldService.getField(id);
+    public ResponseEntity<FieldResponseDTO> getField(@PathVariable Long id) {
+        Optional<FieldResponseDTO> fieldDTO = fieldService.getField(id);
         return fieldDTO.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping
-    public ResponseEntity<FieldDTO> updateField(@RequestBody FieldDTO fieldDTO) {
-        FieldDTO updatedField = fieldService.updateField(fieldDTO);
+    public ResponseEntity<FieldResponseDTO> updateField(@RequestBody FieldDTO fieldDTO) {
+        FieldResponseDTO updatedField = fieldService.updateField(fieldDTO);
         return ResponseEntity.ok(updatedField);
     }
 
@@ -42,14 +43,14 @@ public class FieldController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FieldDTO>> getAllFields() {
-        List<FieldDTO> fields = fieldService.getAllField();
+    public ResponseEntity<List<FieldResponseDTO>> getAllFields() {
+        List<FieldResponseDTO> fields = fieldService.getAllField();
         return ResponseEntity.ok(fields);
     }
 
     @GetMapping("/farm/{id}")
-    public ResponseEntity<List<FieldDTO>> getFieldsByFarm(@PathVariable Long id) {
-        List<FieldDTO> fields = fieldService.getFieldsByFarm(id);
+    public ResponseEntity<List<FieldResponseDTO>> getFieldsByFarm(@PathVariable Long id) {
+        List<FieldResponseDTO> fields = fieldService.getFieldsByFarm(id);
         return ResponseEntity.ok(fields);
     }
 }

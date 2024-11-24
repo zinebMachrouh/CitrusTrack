@@ -49,8 +49,7 @@ public class TreeServiceImpl implements TreeService {
             trees = new ArrayList<>();
             field.setTrees(trees);
         }
-        tree.setAge(TreeStatus.calculateAge(tree.getPlantationDate()));
-        tree.setStatus(TreeStatus.determineTreeStatus(tree.getPlantationDate()));
+
         trees.add(tree);
         tree = treeRepository.save(tree);
 
@@ -76,8 +75,6 @@ public class TreeServiceImpl implements TreeService {
             trees.add(treeToUpdate);
         }
 
-        treeToUpdate.setAge(TreeStatus.calculateAge(treeToUpdate.getPlantationDate()));
-        treeToUpdate.setStatus(TreeStatus.determineTreeStatus(treeToUpdate.getPlantationDate()));
         Tree updatedTree = treeRepository.save(treeToUpdate);
         log.info("Tree with id {} updated successfully.", updatedTree.getId());
         return buildTreeResponse(updatedTree);
@@ -132,11 +129,14 @@ public class TreeServiceImpl implements TreeService {
         if (trees.size() >= maxTreesPerField) {
             throw new IllegalArgumentException("Field is full. Cannot add more trees.");
         }
+
+        if (treeDTO.getPlantationDate().isBefore(field.getFarm().getCreationDate())) {
+            throw new IllegalArgumentException("Tree plantation date cannot be before farm creation date.");
+        }
     }
 
     private TreeResponseDTO buildTreeResponse(Tree tree) {
         TreeResponseDTO treeResponseDTO = treeResponseMapper.toDTO(tree);
-        treeResponseDTO.setAge(TreeStatus.calculateAge(tree.getPlantationDate()));
         treeResponseDTO.setProductivity(TreeStatus.determineTreeStatus(tree.getPlantationDate()).getAnnualProductivity());
         return treeResponseDTO;
     }

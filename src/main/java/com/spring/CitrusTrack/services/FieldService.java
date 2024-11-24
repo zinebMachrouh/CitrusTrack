@@ -1,15 +1,16 @@
 package com.spring.CitrusTrack.services;
 
 import com.spring.CitrusTrack.dto.FieldDTO;
+import com.spring.CitrusTrack.dto.FieldResponseDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface FieldService {
-    FieldDTO saveField(FieldDTO fieldDTO);
-    FieldDTO updateField(FieldDTO fieldDTO);
+    FieldResponseDTO saveField(FieldDTO fieldDTO);
+    FieldResponseDTO updateField(FieldDTO fieldDTO);
     void deleteField(Long id);
-    Optional<FieldDTO> getField(Long id);
-    List<FieldDTO> getAllField();
-    List<FieldDTO> getFieldsByFarm(Long farmId);
+    Optional<FieldResponseDTO> getField(Long id);
+    List<FieldResponseDTO> getAllField();
+    List<FieldResponseDTO> getFieldsByFarm(Long farmId);
 }

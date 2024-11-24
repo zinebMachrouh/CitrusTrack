@@ -1,5 +1,6 @@
 package com.spring.CitrusTrack.dto;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
@@ -13,9 +14,9 @@ public class FieldDTO {
     private Long id = 0L;
 
     @NotNull(message = "Area is required")
-    @PositiveOrZero(message = "Area must be 0 or greater")
+    @DecimalMin(value = "0.1", message = "Area must be greater than 0.1")
     private Double area;
 
-    //@NotNull(message = "Farm is required")
+    @NotNull(message = "Farm is required")
     private FarmDTO farm;
 }
