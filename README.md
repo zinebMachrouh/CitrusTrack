@@ -81,7 +81,7 @@ Here are the key API endpoints for **CitrusTrack**:
 ## 🎯 Project Objectives
 
 - Develop a robust system for managing citrus farms.
-- Implement CRUD operations for managing fields, farms, and harvest details.****
+- Implement CRUD operations for managing fields, farms, and harvest details.
 - Use **JUnit** and **Mockito** for unit testing.
 - Maintain clear separation of concerns with an MVC architecture.
 
