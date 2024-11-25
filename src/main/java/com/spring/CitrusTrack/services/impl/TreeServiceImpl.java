@@ -1,14 +1,14 @@
 package com.spring.CitrusTrack.services.impl;
 
 import com.spring.CitrusTrack.dto.TreeDTO;
-import com.spring.CitrusTrack.dto.TreeResponseDTO;
+import com.spring.CitrusTrack.dto.response.TreeResponseDTO;
 import com.spring.CitrusTrack.entities.Tree;
 import com.spring.CitrusTrack.entities.Field;
 import com.spring.CitrusTrack.entities.enums.TreeStatus;
 import com.spring.CitrusTrack.exceptions.AlreadyExistsException;
 import com.spring.CitrusTrack.exceptions.DoesNotExistsException;
 import com.spring.CitrusTrack.mappers.TreeMapper;
-import com.spring.CitrusTrack.mappers.TreeResponseMapper;
+import com.spring.CitrusTrack.mappers.response.TreeResponseMapper;
 import com.spring.CitrusTrack.repositories.FieldRepository;
 import com.spring.CitrusTrack.repositories.TreeRepository;
 import com.spring.CitrusTrack.services.TreeService;

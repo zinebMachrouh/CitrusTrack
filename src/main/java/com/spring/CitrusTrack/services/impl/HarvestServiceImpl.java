@@ -1,13 +1,13 @@
 package com.spring.CitrusTrack.services.impl;
 
 import com.spring.CitrusTrack.dto.HarvestDTO;
-import com.spring.CitrusTrack.dto.HarvestResponseDTO;
+import com.spring.CitrusTrack.dto.response.HarvestResponseDTO;
 import com.spring.CitrusTrack.entities.Harvest;
 import com.spring.CitrusTrack.entities.enums.Season;
 import com.spring.CitrusTrack.exceptions.AlreadyExistsException;
 import com.spring.CitrusTrack.exceptions.DoesNotExistsException;
 import com.spring.CitrusTrack.mappers.HarvestMapper;
-import com.spring.CitrusTrack.mappers.HarvestResponseMapper;
+import com.spring.CitrusTrack.mappers.response.HarvestResponseMapper;
 import com.spring.CitrusTrack.repositories.HarvestRepository;
 import com.spring.CitrusTrack.services.HarvestService;
 import lombok.AllArgsConstructor;

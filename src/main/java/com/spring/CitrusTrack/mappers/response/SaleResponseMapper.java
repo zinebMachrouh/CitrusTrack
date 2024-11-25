@@ -1,6 +1,6 @@
-package com.spring.CitrusTrack.mappers;
+package com.spring.CitrusTrack.mappers.response;
 
-import com.spring.CitrusTrack.dto.SaleResponseDTO;
+import com.spring.CitrusTrack.dto.response.SaleResponseDTO;
 import com.spring.CitrusTrack.entities.Sale;
 import org.mapstruct.Mapper;
 

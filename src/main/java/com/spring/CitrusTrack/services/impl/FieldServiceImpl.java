@@ -1,15 +1,14 @@
 package com.spring.CitrusTrack.services.impl;
 
-import com.spring.CitrusTrack.dto.EmbeddedFieldDTO;
 import com.spring.CitrusTrack.dto.FarmDTO;
 import com.spring.CitrusTrack.dto.FieldDTO;
-import com.spring.CitrusTrack.dto.FieldResponseDTO;
+import com.spring.CitrusTrack.dto.response.FieldResponseDTO;
 import com.spring.CitrusTrack.entities.Farm;
 import com.spring.CitrusTrack.entities.Field;
 import com.spring.CitrusTrack.exceptions.AlreadyExistsException;
 import com.spring.CitrusTrack.exceptions.DoesNotExistsException;
 import com.spring.CitrusTrack.mappers.FieldMapper;
-import com.spring.CitrusTrack.mappers.FieldResponseMapper;
+import com.spring.CitrusTrack.mappers.response.FieldResponseMapper;
 import com.spring.CitrusTrack.repositories.FarmRepository;
 import com.spring.CitrusTrack.repositories.FieldRepository;
 import com.spring.CitrusTrack.services.FieldService;
@@ -72,13 +71,13 @@ public class FieldServiceImpl implements FieldService {
 
         fieldToUpdate.setFarm(existingFarm);
 
-        List<Field> fields = existingFarm.getFields();
-        fields.removeIf(field -> field.getId().equals(fieldToUpdate.getId()));
-        fields.add(fieldToUpdate);
+//        List<Field> fields = existingFarm.getFields();
+//        fields.removeIf(field -> field.getId().equals(fieldToUpdate.getId()));
+//        fields.add(fieldToUpdate);
 
         fieldToUpdate.setTrees(existingField.getTrees());
 
-        Field updatedField = fieldRepository.save(existingField);
+        Field updatedField = fieldRepository.save(fieldToUpdate);
 
         return fieldResponseMapper.toDTO(updatedField);
     }

@@ -1,10 +1,9 @@
-package com.spring.CitrusTrack.mappers;
+package com.spring.CitrusTrack.mappers.response;
 
-import com.spring.CitrusTrack.dto.EmbeddedFieldDTO;
-import com.spring.CitrusTrack.dto.FarmResponseDTO;
+import com.spring.CitrusTrack.dto.embedded.EmbeddedFieldDTO;
+import com.spring.CitrusTrack.dto.response.FarmResponseDTO;
 import com.spring.CitrusTrack.entities.Farm;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.Collections;
 import java.util.List;

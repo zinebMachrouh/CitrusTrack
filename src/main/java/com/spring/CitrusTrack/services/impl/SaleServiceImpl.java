@@ -1,11 +1,11 @@
 package com.spring.CitrusTrack.services.impl;
 
 import com.spring.CitrusTrack.dto.SaleDTO;
-import com.spring.CitrusTrack.dto.SaleResponseDTO;
+import com.spring.CitrusTrack.dto.response.SaleResponseDTO;
 import com.spring.CitrusTrack.entities.Harvest;
 import com.spring.CitrusTrack.entities.Sale;
 import com.spring.CitrusTrack.mappers.SaleMapper;
-import com.spring.CitrusTrack.mappers.SaleResponseMapper;
+import com.spring.CitrusTrack.mappers.response.SaleResponseMapper;
 import com.spring.CitrusTrack.repositories.HarvestRepository;
 import com.spring.CitrusTrack.repositories.SaleRepository;
 import com.spring.CitrusTrack.services.SaleService;

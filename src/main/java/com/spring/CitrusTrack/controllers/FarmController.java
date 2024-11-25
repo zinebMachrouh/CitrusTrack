@@ -1,7 +1,7 @@
 package com.spring.CitrusTrack.controllers;
 
 import com.spring.CitrusTrack.dto.FarmDTO;
-import com.spring.CitrusTrack.dto.FarmResponseDTO;
+import com.spring.CitrusTrack.dto.response.FarmResponseDTO;
 import com.spring.CitrusTrack.services.FarmService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

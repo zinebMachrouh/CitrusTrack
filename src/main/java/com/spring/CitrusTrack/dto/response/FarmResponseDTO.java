@@ -1,8 +1,8 @@
-package com.spring.CitrusTrack.dto;
+package com.spring.CitrusTrack.dto.response;
 
+import com.spring.CitrusTrack.dto.embedded.EmbeddedFieldDTO;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 

@@ -1,6 +1,6 @@
 package com.spring.CitrusTrack.repositories.custom;
 
-import com.spring.CitrusTrack.dto.FarmResponseDTO;
+import com.spring.CitrusTrack.dto.response.FarmResponseDTO;
 
 import java.util.List;
 

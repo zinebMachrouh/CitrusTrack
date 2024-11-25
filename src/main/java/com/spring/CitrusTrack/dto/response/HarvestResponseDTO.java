@@ -1,4 +1,4 @@
-package com.spring.CitrusTrack.dto;
+package com.spring.CitrusTrack.dto.response;
 
 import com.spring.CitrusTrack.entities.enums.Season;
 import jakarta.validation.constraints.Min;

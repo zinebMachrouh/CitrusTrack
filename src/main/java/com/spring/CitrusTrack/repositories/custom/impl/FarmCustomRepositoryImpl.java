@@ -4,7 +4,7 @@ import com.spring.CitrusTrack.repositories.custom.FarmCustomRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
-import com.spring.CitrusTrack.dto.FarmResponseDTO;
+import com.spring.CitrusTrack.dto.response.FarmResponseDTO;
 import com.spring.CitrusTrack.entities.Farm;
 import jakarta.persistence.criteria.*;
 

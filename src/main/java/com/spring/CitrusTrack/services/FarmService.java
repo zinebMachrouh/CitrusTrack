@@ -1,7 +1,7 @@
 package com.spring.CitrusTrack.services;
 
 import com.spring.CitrusTrack.dto.FarmDTO;
-import com.spring.CitrusTrack.dto.FarmResponseDTO;
+import com.spring.CitrusTrack.dto.response.FarmResponseDTO;
 
 import java.util.List;
 import java.util.Optional;

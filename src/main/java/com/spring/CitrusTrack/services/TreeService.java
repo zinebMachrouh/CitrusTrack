@@ -1,7 +1,7 @@
 package com.spring.CitrusTrack.services;
 
 import com.spring.CitrusTrack.dto.TreeDTO;
-import com.spring.CitrusTrack.dto.TreeResponseDTO;
+import com.spring.CitrusTrack.dto.response.TreeResponseDTO;
 
 import java.util.List;
 import java.util.Optional;

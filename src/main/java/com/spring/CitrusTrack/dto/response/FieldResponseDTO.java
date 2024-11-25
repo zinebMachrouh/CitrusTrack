@@ -1,5 +1,7 @@
-package com.spring.CitrusTrack.dto;
+package com.spring.CitrusTrack.dto.response;
 
+import com.spring.CitrusTrack.dto.embedded.EmbeddedTreeDTO;
+import com.spring.CitrusTrack.dto.FarmDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

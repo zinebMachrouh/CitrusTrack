@@ -1,12 +1,12 @@
 package com.spring.CitrusTrack.services.impl;
 
 import com.spring.CitrusTrack.dto.FarmDTO;
-import com.spring.CitrusTrack.dto.FarmResponseDTO;
+import com.spring.CitrusTrack.dto.response.FarmResponseDTO;
 import com.spring.CitrusTrack.entities.Farm;
 import com.spring.CitrusTrack.exceptions.AlreadyExistsException;
 import com.spring.CitrusTrack.exceptions.DoesNotExistsException;
 import com.spring.CitrusTrack.mappers.FarmMapper;
-import com.spring.CitrusTrack.mappers.FarmResponseMapper;
+import com.spring.CitrusTrack.mappers.response.FarmResponseMapper;
 import com.spring.CitrusTrack.repositories.FarmRepository;
 import com.spring.CitrusTrack.repositories.custom.FarmCustomRepository;
 import com.spring.CitrusTrack.services.FarmService;
@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

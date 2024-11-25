@@ -2,12 +2,12 @@ package com.spring.CitrusTrack.services.impl;
 
 import com.spring.CitrusTrack.dto.FarmDTO;
 import com.spring.CitrusTrack.dto.FieldDTO;
-import com.spring.CitrusTrack.dto.FieldResponseDTO;
+import com.spring.CitrusTrack.dto.response.FieldResponseDTO;
 import com.spring.CitrusTrack.entities.Farm;
 import com.spring.CitrusTrack.entities.Field;
 import com.spring.CitrusTrack.exceptions.DoesNotExistsException;
 import com.spring.CitrusTrack.mappers.FieldMapper;
-import com.spring.CitrusTrack.mappers.FieldResponseMapper;
+import com.spring.CitrusTrack.mappers.response.FieldResponseMapper;
 import com.spring.CitrusTrack.repositories.FarmRepository;
 import com.spring.CitrusTrack.repositories.FieldRepository;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,10 +1,9 @@
-package com.spring.CitrusTrack.dto;
+package com.spring.CitrusTrack.dto.response;
 
-import com.spring.CitrusTrack.entities.enums.TreeStatus;
+import com.spring.CitrusTrack.dto.FieldDTO;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,9 +1,8 @@
-package com.spring.CitrusTrack.mappers;
+package com.spring.CitrusTrack.mappers.response;
 
-import com.spring.CitrusTrack.dto.TreeResponseDTO;
+import com.spring.CitrusTrack.dto.response.TreeResponseDTO;
 import com.spring.CitrusTrack.entities.Tree;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
 

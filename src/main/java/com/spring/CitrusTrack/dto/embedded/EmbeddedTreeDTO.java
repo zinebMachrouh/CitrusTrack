@@ -1,4 +1,4 @@
-package com.spring.CitrusTrack.dto;
+package com.spring.CitrusTrack.dto.embedded;
 
 import lombok.*;
 

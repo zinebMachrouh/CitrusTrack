@@ -1,5 +1,6 @@
-package com.spring.CitrusTrack.dto;
+package com.spring.CitrusTrack.dto.response;
 
+import com.spring.CitrusTrack.dto.HarvestDTO;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

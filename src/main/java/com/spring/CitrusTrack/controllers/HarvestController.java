@@ -1,7 +1,7 @@
 package com.spring.CitrusTrack.controllers;
 
 import com.spring.CitrusTrack.dto.HarvestDTO;
-import com.spring.CitrusTrack.dto.HarvestResponseDTO;
+import com.spring.CitrusTrack.dto.response.HarvestResponseDTO;
 import com.spring.CitrusTrack.services.HarvestService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

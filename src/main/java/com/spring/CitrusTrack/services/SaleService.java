@@ -1,7 +1,7 @@
 package com.spring.CitrusTrack.services;
 
 import com.spring.CitrusTrack.dto.SaleDTO;
-import com.spring.CitrusTrack.dto.SaleResponseDTO;
+import com.spring.CitrusTrack.dto.response.SaleResponseDTO;
 import org.springframework.data.domain.Page;
 
 public interface SaleService {
